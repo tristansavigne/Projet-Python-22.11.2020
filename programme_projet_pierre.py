@@ -62,4 +62,29 @@ def programme_3(start_date = default_sd, end_date = default_ed) :
         res.append(liste_1[k] + (5/9) *(6.112 * (10**((7.5*liste_1[k])/(237.7 + liste_1[k])))*(liste_2[k]/100) - 10))
     return res
 
+def programme_4(start_date = default_sd, end_date = default_ed, x, y) :
+    matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
+    k = 2
+    while x != matrice[k][0] :
+        k = k + 1
+    h = 2
+    while y != matrice[h][0] :
+        h = h + 1
+    listex = matrice[k][1:]
+    listey = matrice[h][1:]
+    espx = st.mean(listex)
+    espy = st.mean(listey)
+    sigx = st.stdev(listex)
+    sigy = st.stdev(listey)
+    n = len(listex)
+    listexy = []
+    for i in range(n) :
+        listexy.append(listex[i] * listey[i])
+    espxy = st.mean(listexy)
+    r = (espxy - espx * espy) / (sigx * sigy)
+
+
+
+
+
 dt.strptime('2019-08-25 11:45:54+02:00', '%Y-%m-%d %H:%M:%S%z')
