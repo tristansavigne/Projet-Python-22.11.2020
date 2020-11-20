@@ -5,12 +5,30 @@ from datetime import datetime as dt
 import statistics as st
 
 default_sd = dt.strptime('2018-01-01 00:00:00+02:00', '%Y-%m-%d %H:%M:%S%z')
-default_ed = dt.strptime('2019-08-25 11:45:54+02:00', '%Y-%m-%d %H:%M:%S%z')
+default_ed = dt.strptime('2019-08-25 17:47:08+02:00', '%Y-%m-%d %H:%M:%S%z')
+
+matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
+
+#csv = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
+#longueur = len(csv[1])
+#for k in range(1, longueur) :
+    #csv[7][k] = dt.strptime(csv[7][k], '%Y-%m-%d %H:%M:%S%z')
+#csv[7][0] = dt.strptime('2015-01-01 00:00:00+02:00', '%Y-%m-%d %H:%M:%S%z')
+
+#def tri(t) :
+    #n = len(t[1])
+    #for i in range(n) :
+        #for k in range(n - i - 1) :
+            #if t[7][k] > t[7][k + 1] :
+                #for y in range(8) :
+                    #t[y][k], t[y][k+1] = t[y][k+1], t[y][k]
+
+
+
 
 def programme_1(x, start_date = default_sd, end_date = default_ed) :
     liste_abs = []
     liste_ord = []
-    matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
     k = 2
     while x != matrice[k][0] :
         k = k + 1
@@ -27,7 +45,6 @@ def programme_1(x, start_date = default_sd, end_date = default_ed) :
 
 def programme_2(x, start_date = default_sd, end_date = default_ed) :
     liste = []
-    matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
     liste_abs = []
     liste_ord = []
     k = 2
@@ -56,7 +73,6 @@ def programme_3(start_date = default_sd, end_date = default_ed) :
     res = []
     liste_1 = []
     liste_2 = []
-    matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
     i = 1
     while dt.strptime(matrice[7][i], '%Y-%m-%d %H:%M:%S%z') < start_date :
         i = i + 1
@@ -70,7 +86,6 @@ def programme_3(start_date = default_sd, end_date = default_ed) :
     return res
 
 def programme_4(x, y, start_date = default_sd, end_date = default_ed) :
-    matrice = pd.read_csv('EIVP_KM.csv', sep = ';', header = None)
     k = 2
     while x != matrice[k][0] :
         k = k + 1
@@ -105,8 +120,6 @@ def programme_4(x, y, start_date = default_sd, end_date = default_ed) :
     plt.plot(liste_abs, liste_ord2, label = y)
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.show()
-
-
 
 
 dt.strptime('2019-08-25 11:45:54+02:00', '%Y-%m-%d %H:%M:%S%z')
