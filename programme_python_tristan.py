@@ -93,9 +93,19 @@ def programme_3(start_date = default_sd, end_date = default_ed) :
     n = len(liste_1)
     for k in range(n) :
         res.append(liste_1[k] + (5/9) *(6.112 * (10**((7.5*liste_1[k])/(237.7 + liste_1[k])))*(liste_2[k]/100) - 10))
+    liste_abs = []
+    j=1
+    while dt.strptime(matrice[7][j], '%Y-%m-%d %H:%M:%S%z') < start_date :
+        j = j + 1 # car i déjà utilisé,
+    while dt.strptime(matrice[7][j], '%Y-%m-%d %H:%M:%S%z') < end_date :
+        liste_abs.append(dt.strptime(matrice[7][j], '%Y-%m-%d %H:%M:%S%z')) # liste_ord supprimer car on enlève donnée (variable de l'algo 1) et on met humidex à la place.
+        j = j + 1
+    plt.plot(liste_abs, res) #abscisse et ordonnée
+    plt.show()
     return res
 
 dt.strptime('2019-08-25 11:45:54+02:00', '%Y-%m-%d %H:%M:%S%z')
+
 
 #expliquer le 3
 
@@ -129,14 +139,14 @@ def programme_4( x, y, start_date = default_sd, end_date = default_ed) :
         liste_ord1.append(float(matrice[k][i]))
         liste_ord2.append(float(matrice[h][i]))
         i = i + 1
-    plt.plot(liste_abs, liste_ord)
-    plt.show()
+    plt.subplot(211) # 211 juste pour placer le graph en haut ou en bas.
 
-
-    plt.plot(liste_abs, liste_ord1, label = x)
+    plt.plot(liste_abs, liste_ord1, label = x)  #mettre liste absisse puis ordonnée et après c'est pour assigner la valeur au graphique pour la légende.
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.title('r = ' + str(r))
+    plt.subplot(212)
     plt.plot(liste_abs, liste_ord2, label = y)
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.show()
 
-#corriger 4
+
