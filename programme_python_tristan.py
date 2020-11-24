@@ -140,7 +140,6 @@ def programme_4( x, y, start_date = default_sd, end_date = default_ed) :
         liste_ord2.append(float(matrice[h][i]))
         i = i + 1
     plt.subplot(211) # 211 juste pour placer le graph en haut ou en bas.
-
     plt.plot(liste_abs, liste_ord1, label = x)  #mettre liste absisse puis ordonnée et après c'est pour assigner la valeur au graphique pour la légende.
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.title('r = ' + str(r))
