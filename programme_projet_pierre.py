@@ -115,8 +115,11 @@ def programme_4(x, y, start_date = default_sd, end_date = default_ed) :
         liste_ord1.append(float(matrice[k][i]))
         liste_ord2.append(float(matrice[h][i]))
         i = i + 1
+    plt.subplot(211)
     plt.plot(liste_abs, liste_ord1, label = x)
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.title('r = ' + str(r))
+    plt.subplot(212)
     plt.plot(liste_abs, liste_ord2, label = y)
     plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=2, mode="expand", borderaxespad=0.)
     plt.show()
